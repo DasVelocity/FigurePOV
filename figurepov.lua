@@ -21,7 +21,7 @@ UserInputService.InputBegan:Connect(function(input, gpe)
 		end
 		if not model then return end
 
-		local fakeHead = model:FindFirstChild("FakeHead", true)
+		local fakeHead = model:FindFirstChild("Head", true)
 		if not fakeHead or not fakeHead:IsA("BasePart") then return end
 
 		if not targetPart then
@@ -31,6 +31,7 @@ UserInputService.InputBegan:Connect(function(input, gpe)
 			targetPart.CanCollide = false
 			targetPart.Transparency = 1
 			targetPart.Position = fakeHead.Position
+            targetPart.CFrame = fakeHead.CFrame * CFrame.Angles(0, math.rad(180), 0)
 			targetPart.Parent = fakeHead
 
 			local weld = Instance.new("WeldConstraint")
